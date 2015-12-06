@@ -1,5 +1,6 @@
 package it.nerdammer.spark.hbase
 
+import org.apache.hadoop.fs.Path
 import org.apache.hadoop.hbase.HBaseConfiguration
 import org.apache.spark.SparkConf
 
@@ -15,7 +16,7 @@ case class HBaseSparkConf (
     conf.set("hbase.rootdir", hbaseRootDir)
     conf.set("hbase.zookeeper.quorum", hbaseHost)
 
-    if (hbaseSitePath != null) conf.addResource(hbaseSitePath)
+    if (hbaseSitePath != null) conf.addResource(new Path(hbaseSitePath))
 
     conf
   }
