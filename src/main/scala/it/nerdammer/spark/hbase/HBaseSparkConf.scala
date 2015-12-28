@@ -12,8 +12,8 @@ case class HBaseSparkConf (
   def createHadoopBaseConfig() = {
     val conf = HBaseConfiguration.create
 
-    conf.setBoolean("hbase.cluster.distributed", true)
     conf.set("hbase.rootdir", hbaseRootDir)
+    conf.set("hbase.rpc.timeout", "900000")
     conf.set("hbase.zookeeper.quorum", hbaseHost)
 
     if (hbaseSitePath != null) conf.addResource(new Path(hbaseSitePath))
